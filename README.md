@@ -1,6 +1,9 @@
 # Kero Blaster
 An open-source recreation of the game Kero Blaster by Studio Pixel. You **need** a legal copy of the game in order to use this repo, as it just builds an executable!
 
+## When Will This Be Playable?
+When it gets done. I will try to set this up in a way so you can play what I have so far but it'll likely take a long time for this project to reach that stage.
+
 ## Purpose
 * Kero Blaster is present on a variety of different platforms with different versions.
 * It is also a good amount of work to set up an injection toolchain for modding.
