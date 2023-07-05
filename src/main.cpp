@@ -27,7 +27,8 @@ int main()
             SDL_free(basePath);
         }
 
-        // TODO: pxmApp_GetApplicationSupport.
+        // Setup game paths and info.
+        // pxmApp_GetApplicationSupport. // Probably not important.
         if (pxFile::sttc_set_master_base_dir("rsc_k"))
         {
             // TODO!!!
