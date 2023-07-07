@@ -3,7 +3,13 @@
 #include <cstdint>
 
 // Set the base directory for file operations.
-std::size_t pxwFile_set_master_base_dir(const char* dir);
+bool pxwFile_set_master_base_dir(const char* dir);
+
+// Set the common directory for file operations.
+bool pxwFile_set_master_cmmn_dir(const char* dir);
+
+// Set the resource directory for file operations.
+bool pxwFile_set_trns_dir(const char* dir);
 
 // Create a directory in resource path.
 bool pxwFile_create_trns_sub_dir(const char* dir);

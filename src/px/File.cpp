@@ -15,9 +15,24 @@ pxFile::pxFile(bool noTrns, bool unused)
     unkThing = 0;
 }
 
-std::size_t pxFile::sttc_set_master_base_dir(const char* dir)
+bool pxFile::sttc_set_master_base_dir(const char* dir)
 {
     return pxwrFile_set_base_directory(dir);
+}
+
+bool pxFile::sttc_set_master_cmmn_dir(const char* dir)
+{
+    return pxwrFile_set_cmmn_directory(dir);
+}
+
+bool pxFile::sttc_set_trns_dir(const char* dir)
+{
+    return pxwrFile_set_trns_directory(dir);
+}
+
+bool pxFile::sttc_create_trns_sub_dir(const char* dir)
+{
+    return pxwrFile_create_trns_sub_dir(dir);
 }
 
 FILE* pxFile::get_file_descriptor()

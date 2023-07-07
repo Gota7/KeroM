@@ -2,9 +2,24 @@
 
 #include "pxw/File.hpp"
 
-std::size_t pxwrFile_set_base_directory(const char* dir)
+bool pxwrFile_set_base_directory(const char* dir)
 {
     return pxwFile_set_master_base_dir(dir);
+}
+
+bool pxwrFile_set_cmmn_directory(const char* dir)
+{
+    return pxwFile_set_master_cmmn_dir(dir);
+}
+
+bool pxwrFile_set_trns_directory(const char* dir)
+{
+    return pxwFile_set_trns_dir(dir);
+}
+
+bool pxwrFile_create_trns_sub_dir(const char* dir)
+{
+    return pxwFile_create_trns_sub_dir(dir);
 }
 
 bool pxwrFile_get_size(FILE* file, int* outSizeWrote)

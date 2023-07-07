@@ -3,6 +3,7 @@
 #include "Platform.hpp"
 #include <pthread.h>
 #include <unistd.h>
+#include <time.h>
 
 namespace KeroPlatform
 {

@@ -4,7 +4,16 @@
 #include <cstdio>
 
 // Set the base directory for file operations.
-std::size_t pxwrFile_set_base_directory(const char* dir);
+bool pxwrFile_set_base_directory(const char* dir);
+
+// Set the common directory for file operations.
+bool pxwrFile_set_cmmn_directory(const char* dir);
+
+// Set the resource directory for file operations.
+bool pxwrFile_set_trns_directory(const char* dir);
+
+// Create a sub-directory in the resource path.
+bool pxwrFile_create_trns_sub_dir(const char* dir);
 
 // Get file size.
 bool pxwrFile_get_size(FILE* file, int* outSizeWrote);

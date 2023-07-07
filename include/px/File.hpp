@@ -26,7 +26,16 @@ public:
     pxFile(bool noTrns, bool unused);
 
     // Set the base directory to have paths be relative to.
-    static std::size_t sttc_set_master_base_dir(const char* dir);
+    static bool sttc_set_master_base_dir(const char* dir);
+
+    // Set the common directory.
+    static bool sttc_set_master_cmmn_dir(const char* dir);
+
+    // Set the resource directory.
+    static bool sttc_set_trns_dir(const char* dir);
+
+    // Create a sub-directory for resources.
+    static bool sttc_create_trns_sub_dir(const char* dir);
 
     // Get the internal file descriptor.
     FILE* get_file_descriptor();
@@ -46,7 +55,13 @@ public:
     // Read items into a destination.
     bool r(void* dest, int itemSize, int numItems);
 
+    // Write a variadic string to the file.
+    void w_arg_asfile(const char* format, ...);
+
     // Write items to a file.
     bool w_asfile(const void* src, int itemSize, int numItems);
+
+    // Close the file.
+    bool close();
 
 };

@@ -19,7 +19,8 @@ char _path_dir_master_cmmn[DIR_PATH_SIZE] = { 0 };
 // Where the resource path is.
 char _path_dir_trns[DIR_PATH_SIZE] = { 0 };
 
-std::size_t pxwFile_set_master_base_dir(const char* dir)
+#include <cassert>
+bool pxwFile_set_master_base_dir(const char* dir)
 {
 
     // Find base path.
@@ -50,9 +51,22 @@ std::size_t pxwFile_set_master_base_dir(const char* dir)
     // Set base path.
     int len = snprintf(_path_dir_master_base, 0x400, "%s/%s", basePath, dir);
     // TODO: INODE STUFF???
+    assert(false);
     if (firstChar != '/') SDL_free(basePath);
-    return (std::size_t)len;
+    // return (std::size_t)len;
 
+}
+
+bool pxwFile_set_master_cmmn_dir(const char* dir)
+{
+    // TODO!!!
+    assert(false);
+}
+
+bool pxwFile_set_trns_dir(const char* dir)
+{
+    // TODO!!!
+    assert(false);
 }
 
 bool pxwFile_create_trns_sub_dir(const char* dir)
