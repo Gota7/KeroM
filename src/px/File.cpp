@@ -1,7 +1,11 @@
 #include "px/File.hpp"
 
 #include "pxwr/File.hpp"
+#include <cstdarg>
+#include <cstdlib>
 #include <cstring>
+
+#define TMP_BUF_LEN 0x400
 
 pxFile::pxFile(bool noTrns, bool unused)
 {
@@ -11,8 +15,20 @@ pxFile::pxFile(bool noTrns, bool unused)
     fileLen = 0;
     position = 0;
     isOpen = false;
-    bzero(unkPath, 0x10);
+    tmpBuf = nullptr;
+    unk = nullptr;
     unkThing = 0;
+}
+
+bool pxFile::close()
+{
+    if (isOpen && file)
+        fclose(file);
+    file = nullptr;
+    isOpen = false;
+    fileLen = 0;
+    position = 0;
+    return true;
 }
 
 bool pxFile::sttc_set_master_base_dir(const char* dir)
@@ -95,6 +111,28 @@ bool pxFile::r(void* dest, int itemSize, int numItems)
         if (numItems <= 0) return false;
         // TODO: MEMORY STREAMS!!!
     }
+}
+
+bool pxFile::w_arg_asfile(const char* format, ...)
+{
+    if (!file || !isOpen) return false;
+
+    // Allocate buffer if non-existent.
+    if (!tmpBuf)
+    {
+        tmpBuf = (char*)malloc(TMP_BUF_LEN);
+        if (!tmpBuf) return false;
+    }
+
+    // Write data.
+    bzero(tmpBuf, TMP_BUF_LEN);
+    va_list args;
+    va_start(args, format);
+    vsprintf(tmpBuf, format, args);
+    va_end(args);
+    fwrite(tmpBuf, 1, strlen(tmpBuf), file);
+    return true;
+
 }
 
 bool pxFile::w_asfile(const void* src, int itemSize, int numItems)

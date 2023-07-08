@@ -17,13 +17,17 @@ class pxFile
     bool isOpen;
     int fileLen;
     int position;
-    char unkPath[0x10];
+    char* tmpBuf;
+    char* unk;
     int unkThing;
 
 public:
 
     // Make a new file reader/writer.
     pxFile(bool noTrns, bool unused);
+
+    // Close the file.
+    bool close();
 
     // Set the base directory to have paths be relative to.
     static bool sttc_set_master_base_dir(const char* dir);
@@ -56,12 +60,9 @@ public:
     bool r(void* dest, int itemSize, int numItems);
 
     // Write a variadic string to the file.
-    void w_arg_asfile(const char* format, ...);
+    bool w_arg_asfile(const char* format, ...);
 
     // Write items to a file.
     bool w_asfile(const void* src, int itemSize, int numItems);
-
-    // Close the file.
-    bool close();
 
 };

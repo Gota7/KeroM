@@ -76,7 +76,9 @@ void dlog_c(const char* format, ...)
 
     // Add message and end with newline. Also show it to console.
     va_list args;
+    va_start(args, format);
     vsnprintf(msg, MAX_LOG_SIZE - sizeof(wchar_t), format, args);
+    va_end(args);
     size_t msgLen = strlen(msg);
     *(wchar_t*)(msg + msgLen) = '\n';
     printf("%s", msg);
